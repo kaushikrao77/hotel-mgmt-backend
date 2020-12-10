@@ -27,3 +27,9 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - uses: akhileshns/heroku-deploy@v3.7.8 # This is the action
+      with:
+        heroku_api_key: 2f09245e-6376-424a-8ca2-5e59aab15d97
+        heroku_app_name: "hotel-mnmt" #Must be unique in Heroku
+        heroku_email: "buyenggprojects@gmail.com"
+        usedocker: true
