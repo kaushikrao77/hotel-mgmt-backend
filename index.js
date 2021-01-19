@@ -1,3 +1,4 @@
+let { incDate } = require('./utils.js');
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -30,6 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let Room = require("./models/room-model");
 let Order = require("./models/order-model");
 
+
 app.post("/", (req, res) => {
   console.log("hi hotel");
   let daysOfYear = [];
@@ -51,7 +53,7 @@ app.post("/", (req, res) => {
       for (
         let d = new Date(req.body.checkInDate);
         d <= new Date(req.body.checkOutDate) && loop;
-        d.setDate(d.getDate() + 1)
+        incDate(d)
       ) {
         let orders = await Order.find({
           roomId: req.body.roomId,
