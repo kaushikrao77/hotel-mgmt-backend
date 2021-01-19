@@ -67,6 +67,7 @@ app.post("/", (req, res) => {
         }
       }
       if (!loop) {
+        console.log("returning");
         res.json({
           roomFull: true,
           dateRoomFull,
@@ -93,19 +94,25 @@ app.post("/", (req, res) => {
           `;
           let transporter = nodemailer.createTransport(
             smtpTransport({
-              service: "gmail",
+              // service: "gmail",
+              // auth: {
+              //   user: "buyenggprojects@gmail.com",
+              //   pass: "ASDFmnbv@!",
+              // },
+              host: "smtp.mailtrap.io",
+              port: 2525,
               auth: {
-                user: "buyenggprojects@gmail.com",
-                pass: "ASDFmnbv@!",
+                user: "8d4a223302421e",
+                pass: "d00d8ad77d2725",
               },
             })
           );
           transporter.sendMail(
             {
-              from: '"Nodemailer" <buyenggprojects@gmail.com>',
+              from: '"Nodemailer" <jeevanmahesh00@gmail.com>',
               to: orderReturned.email,
               subject: "Thanks for booking a room",
-              text: "Hello world?",
+              text: "Thanks for booking a room",
               html: sendHTML,
             },
             function (error, info) {
@@ -131,6 +138,6 @@ app.get("/abc", (req, res) => {
   });
 });
 
-app.listen(3001, () => {
+app.listen(3003, () => {
   console.log("server started on port 3001");
 });
