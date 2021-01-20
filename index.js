@@ -1,4 +1,4 @@
-let { incDate } = require('./utils.js');
+let { incDate } = require("./utils.js");
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -30,7 +30,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 let Room = require("./models/room-model");
 let Order = require("./models/order-model");
-
 
 app.post("/", (req, res) => {
   console.log("hi hotel");
@@ -95,7 +94,8 @@ app.post("/", (req, res) => {
               <p>Your Order ID is: ${orderReturned._id}</p>
           `;
           let transporter = nodemailer.createTransport(
-            smtpTransport({
+            // smtpTransport(
+            {
               // service: "gmail",
               // auth: {
               //   user: "buyenggprojects@gmail.com",
@@ -107,7 +107,8 @@ app.post("/", (req, res) => {
                 user: "8d4a223302421e",
                 pass: "d00d8ad77d2725",
               },
-            })
+            }
+            // )
           );
           transporter.sendMail(
             {
